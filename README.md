@@ -30,6 +30,15 @@ Para criação de formulário foi utilizado a biblioteca unform.
 Documentação utilizada: https://unform.dev/
 
 
+## Mensagens de erro
+
+Erro para email inválido.
+![](https://j.gifs.com/r8JD36.gif)
+
+Erro para campo vazio
+
+![](https://j.gifs.com/RORAzR.gif)
+
 ## Exemplo
  
 
