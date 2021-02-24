@@ -15,6 +15,7 @@ import Toast from 'react-native-toast-message';
 import RootToast from '../../components/Toast';
 import { KeyboardAvoidingView, ScrollView, Platform } from 'react-native';
 import * as Yup from 'yup';
+import getValidationErros from '../../utils/getValidationErros';
 
 interface SignInFormData {
   email: string;
@@ -51,6 +52,13 @@ const Login: React.FC = () => {
     }
     catch (err) {
       setLoading(false);
+      if(err instanceof Yup.ValidationError) {
+        const errors = getValidationErros(err);
+
+        formRef.current?.setErrors(errors);
+        return
+      }
+  
       Toast.show({
         type: 'error',
         position: 'top',

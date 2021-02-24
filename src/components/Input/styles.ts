@@ -1,6 +1,22 @@
-import styled from 'styled-components/native'; 
+import styled, { css } from 'styled-components/native'; 
 
-export const Container = styled.View`
+export interface ContainerProps {
+  isFocused: boolean;
+  isFilled: boolean;
+  isErrored: boolean;
+}
+
+export const TextInput = styled.TextInput` 
+  color: #383E71;
+  font-size: 16px;
+`;
+
+export const ErrorMessage = styled.Text` 
+  color: #FF377F;
+  font-size: 14px;
+`; 
+
+export const Container = styled.View<ContainerProps>`
   width: 100%;
   height: 60px;
   padding: 0 16px;
@@ -12,10 +28,9 @@ export const Container = styled.View`
 
   flex-direction: row;
   align-items: center;
+  ${props => props.isErrored && css`border: 2px solid #FF377F` };
+
+  ${props => props.isFocused && css`border-color: #9D25B0` };
+
 `;
 
-export const TextInput = styled.TextInput`
-  flex: 1;
-  color: #383E71;
-  font-size: 16px;
-`; 
