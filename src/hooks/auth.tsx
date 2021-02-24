@@ -41,13 +41,12 @@ const AuthProvider: React.FC = ({ children }) => {
         setData({ token: token[1], usuario: JSON.parse(usuario[1]) })
       }
       setLoading(false);
-    } 
+    }
     loadStorageData();
   }, [])
 
 
   const signIn = useCallback(async ({ email, password }) => {
-    console.log(email, password);
     const response = await api.post('acesso/autenticar', {
       Email: email,
       Senha: password
@@ -55,7 +54,6 @@ const AuthProvider: React.FC = ({ children }) => {
     console.log(response);
 
     const { token, usuario } = response.data;
-    console.log(token, usuario);
     await AsyncStorage.multiSet([
       ['@Wiser:token', token],
       ['@Wiser:user', JSON.stringify(usuario)]
